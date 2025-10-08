@@ -301,28 +301,44 @@
   </section>
 
   <!-- Contact -->
-  <section id="contact" class="contact section">
-    <div class="container contact-grid">
-      <div class="box reveal">
-        <h2>Contact</h2>
-        <form onsubmit="event.preventDefault();alert('Thanks for reaching out!');" aria-label="contact form">
-          <label class="lead" style="font-size:.95rem;color:#555" for="name">Name</label>
-          <input id="name" name="name" required>
-          <label class="lead" style="font-size:.95rem;color:#555" for="email">Email</label>
-          <input id="email" name="email" type="email" required>
-          <label class="lead" style="font-size:.95rem;color:#555" for="msg">Message</label>
-          <textarea id="msg" name="message" rows="4"></textarea>
-          <div style="margin-top:10px"><button class="btn gold" type="submit">Send message</button></div>
-        </form>
-      </div>
-      <div class="box reveal" style="text-align:center">
-        <h2>Follow Us</h2>
-        <p class="lead">Stories, routines, and behind-the-scenes.</p>
-        <p><a class="btn" href="https://www.instagram.com/missgoldenhair?utm_source=ig_web_button_share_sheet&igsh=MWMwczU1NDdnZGhwOA==" target="_blank" rel="noopener">Instagram</a></p>
-        <p style="margin-top:10px"><a class="btn" href="#">TikTok</a></p>
-      </div>
+<section id="contact" class="contact section">
+  <div class="container contact-grid">
+    <!-- Contact box -->
+    <div class="box reveal">
+      <h2>Contact</h2>
+      <form id="whatsappForm" onsubmit="sendToWhatsApp(event)" aria-label="contact form">
+        <label class="lead" style="font-size:.95rem;color:#555" for="name">Name</label>
+        <input id="name" name="name" required>
+        <label class="lead" style="font-size:.95rem;color:#555" for="msg">Message</label>
+        <textarea id="msg" name="message" rows="4" placeholder="Your message here..." required></textarea>
+        <div style="margin-top:10px">
+          <button class="btn gold" type="submit">Send via WhatsApp</button>
+        </div>
+      </form>
     </div>
-  </section>
+
+    <!-- Follow Us box -->
+    <div class="box reveal" style="text-align:center">
+      <h2>Follow Us</h2>
+      <p class="lead">Stories, routines, and behind-the-scenes.</p>
+      <p><a class="btn" href="https://www.instagram.com/missgoldenhair?utm_source=ig_web_button_share_sheet&igsh=MWMwczU1NDdnZGhwOA==" target="_blank" rel="noopener">📸 Instagram</a></p>
+      <p style="margin-top:10px"><a class="btn" href="https://www.tiktok.com/@missgoldenhair.my" target="_blank" rel="noopener">🎵 TikTok</a></p>
+    </div>
+  </div>
+</section>
+
+<script>
+  function sendToWhatsApp(event) {
+    event.preventDefault();
+    const name = document.getElementById("name").value.trim();
+    const message = document.getElementById("msg").value.trim();
+    const phone = "60194678912";
+    const text = `Hi MissGoldenHair! My name is ${name}. ${message ? "Message: " + message : ""}`;
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+    window.open(url, "_blank");
+  }
+</script>
+
 
   <footer>
     <div class="container">© <span id="y"></span> missgoldenhair — minimalist design</div>
